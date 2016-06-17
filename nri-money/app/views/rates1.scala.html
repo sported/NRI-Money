@@ -1,0 +1,169 @@
+
+@(productList: List[ProductDisplay])
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <title>Compare Before Trasnfer </title>
+      
+       <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/rates.css")"></link>
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")"></link>
+        <script src="@routes.Assets.versioned("javascripts/hello.js")" type="text/javascript"></script>
+  	  	<script src="@routes.Assets.versioned("lib/jquery/jquery.min.js")" type="text/javascript"></script>
+       	<script src="@routes.Assets.versioned("lib/bootstrap/js/bootstrap.min.js")" type="text/javascript"></script>
+       	<script src="@routes.Assets.versioned("javascripts/main.js")"> </script>
+       	
+         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("lib/bootstrap/css/bootstrap.min.css")"></link>
+       	 
+    </head>
+    <body>
+     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+     <div class="cover-container">
+       <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">NRI Money</a>
+        </div>
+        
+           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                 <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a href="about.html">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="contact.html">Contact</a>
+                    </li>
+                   
+                    
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+ 
+ 
+     </div>
+     </nav>
+    
+    
+    <div class="cover-container">
+    
+    <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Transfer 
+                    <small>-amount from currency to to currency-</small>
+                </h1>
+            </div>
+        </div>
+        
+    <div class="row">
+          <div class ="col-md-4">Provider / Product Name</div>
+        	 <div class ="col-md-2 text-center">Exchange Rate</div>
+        	 <div class ="col-md-3 text-center">Charges</div>
+        	 <div class ="col-md-3 text-center">You get</div>
+          </div>
+         <div class="row ">
+    
+    @for(index <- 0 until productList.size){
+     <div class="panel panel-default">
+     <div class="panel-heading">
+     <div class="row">
+        	<div class ="col-lg-4">
+        	<div  style="margin-bottom: 0px;width:100%;">
+              <div  style="padding: 0px;padding-bottom: 10px;">
+                  <div class='imgcontainer'>
+                   <img class='imagesize' 
+                          src= "@routes.Assets.versioned("images/"+productList(index).logoUrl)"  />
+                     
+                  </div>
+
+              </div>
+              
+          </div>
+        	       	</div>
+        	<div class ="col-lg-2 text-center lead"> ₹ <nbsp/> @productList(index).exRate</div>
+        	 <div class ="col-lg-3 text-center lead"> @productList(index).chargeCurrency <nbsp/> @("%.2f".format(productList(index).charges))</div>
+        	 <div class ="col-lg-3 text-center lead">
+        	 
+        	 <strong > ₹ <nbsp/> @("%.2f".format(productList(index).toAmt)) </strong>
+        	 
+        	 
+        	 </div>
+        	
+        </div>
+          <div class="row ">
+          <div class ="col-lg-4 text-center">
+          	<strong>@productList(index).instName-@productList(index).productName</strong>
+          </div>
+          <div class ="col-lg-5">
+          </div>
+           <div class ="col-lg-3 text-center">
+           	<div class="btn btn-success">
+        	 	<a href="javascript:void(0);" 
+            onclick="window.open('@productList(index).url');return false;" style="color: #fff;"> 
+        	 	 <span>Transfer Money</span></a>
+        	 	</div>
+           </div>
+          </div>
+        
+        </div>
+         </div>	 
+          }
+    
+     </div>
+   <!--   <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+   <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">NRI Money</h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                  
+                  <li><a href="#">Contact Us</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        
+          
+           <div class="inner cover">
+          <div class="row">
+          <div class ="col-md-5">Provider / Product Name</div>
+        	 <div class ="col-md-2">Exchange Rate</div>
+        	 <div class ="col-md-2">Charges</div>
+        	 <div class ="col-md-3">You get</div>
+          </div>
+         <div class="row">
+        @for(index <- 0 until productList.size){
+        	<div class ="col-md-5">@productList(index).instName-@productList(index).productName</div>
+        	<div class ="col-md-2"> ₹ <nbsp/> @productList(index).exRate</div>
+        	 <div class ="col-md-2">@productList(index).chargeCurrency <nbsp/> @("%.2f".format(productList(index).charges))</div>
+        	 <div class ="col-md-3"> ₹ <nbsp/> @("%.2f".format(productList(index).toAmt)) </div>
+        	
+        	 
+          }   
+         </div>
+         </div>
+         
+          
+          
+                  </div>
+
+      </div>
+
+    </div>-->
+ 	
+    </body>
+    
+    </html>
