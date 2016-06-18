@@ -1,3 +1,5 @@
+boxfuse run -env=prod -ports.http=80 -jvm.args=-Dplay.crypto.secret="QCY?tAnfk?aZ?iwrNwnxIlR6CTf:G3gf:90Latabg@5241AB`R5W:1uDFN];Ik@n"
+
 This is your new Play application
 =================================
 

@@ -38,7 +38,6 @@ create table institution (
   name                      varchar(255),
   inst_type                 varchar(255),
   url                       varchar(255),
-  constraint uq_institution_name unique (name),
   constraint pk_institution primary key (id))
 ;
 
