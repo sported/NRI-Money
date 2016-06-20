@@ -1,5 +1,7 @@
 boxfuse run -env=prod -ports.http=80 -jvm.args=-Dplay.crypto.secret="QCY?tAnfk?aZ?iwrNwnxIlR6CTf:G3gf:90Latabg@5241AB`R5W:1uDFN];Ik@n"
 
+boxfuse run nrimoney:1.0 -env=test  -ports.http=80 -jvm.args=-Dconfig.resource=application-test.conf -jvm.args=-Dplay.crypto.secret="abcjsdjkssAA"
+
 This is your new Play application
 =================================
 

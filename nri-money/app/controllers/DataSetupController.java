@@ -40,7 +40,7 @@ public class DataSetupController extends Controller {
     	
     
     	Institution institution2 = new Institution();
-    	institution2.name = "State Bak of India";
+    	institution2.name = "State Bank of India";
     	institution2.instType ="Bank";
     	institution2.url = "https://remit.onlinesbi.com/";
     	institution2.logoUrl ="SBI-logo.png";

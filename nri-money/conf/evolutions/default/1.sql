@@ -4,9 +4,9 @@
 # --- !Ups
 
 create table ex_charge (
-  id                        bigint not null,
-  depends_on_amt            boolean,
-  depends_on_currency       boolean,
+  id                        bigint auto_increment not null,
+  depends_on_amt            tinyint(1) default 0,
+  depends_on_currency       tinyint(1) default 0,
   product_id                bigint,
   amt_currency              varchar(255),
   from_amt                  double,
@@ -22,7 +22,7 @@ create table ex_charge (
 ;
 
 create table ex_rate (
-  id                        bigint not null,
+  id                        bigint auto_increment not null,
   product_id                bigint,
   from_amt                  double,
   to_amt                    double,
@@ -33,7 +33,7 @@ create table ex_rate (
 ;
 
 create table institution (
-  id                        bigint not null,
+  id                        bigint auto_increment not null,
   logo_url                  varchar(255),
   name                      varchar(255),
   inst_type                 varchar(255),
@@ -42,19 +42,11 @@ create table institution (
 ;
 
 create table product (
-  id                        bigint not null,
+  id                        bigint auto_increment not null,
   institution_id            bigint,
   name                      varchar(255),
   constraint pk_product primary key (id))
 ;
-
-create sequence ex_charge_seq;
-
-create sequence ex_rate_seq;
-
-create sequence institution_seq;
-
-create sequence product_seq;
 
 alter table ex_charge add constraint fk_ex_charge_product_1 foreign key (product_id) references product (id) on delete restrict on update restrict;
 create index ix_ex_charge_product_1 on ex_charge (product_id);
@@ -67,23 +59,15 @@ create index ix_product_institution_3 on product (institution_id);
 
 # --- !Downs
 
-SET REFERENTIAL_INTEGRITY FALSE;
+SET FOREIGN_KEY_CHECKS=0;
 
-drop table if exists ex_charge;
+drop table ex_charge;
 
-drop table if exists ex_rate;
+drop table ex_rate;
 
-drop table if exists institution;
+drop table institution;
 
-drop table if exists product;
+drop table product;
 
-SET REFERENTIAL_INTEGRITY TRUE;
-
-drop sequence if exists ex_charge_seq;
-
-drop sequence if exists ex_rate_seq;
-
-drop sequence if exists institution_seq;
-
-drop sequence if exists product_seq;
+SET FOREIGN_KEY_CHECKS=1;
 
